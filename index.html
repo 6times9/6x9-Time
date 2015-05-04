@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>6x9time by 6times9</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>6x9time</h1>
+        <p>A decimal time system inspired by Swatch Internet Time, but in a traditional format (i.e. hours, minutes, and seconds).</p>
+
+        <p class="view"><a href="https://github.com/6times9/6x9time">View the Project on GitHub <small>6times9/6x9time</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/6times9/6x9time/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/6times9/6x9time/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/6times9/6x9time">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="6x9-time" class="anchor" href="#6x9-time" aria-hidden="true"><span class="octicon octicon-link"></span></a>6x9 Time</h1>
+
+<h2>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
+
+<p>6x9 Time is a decimal time system inspired by Swatch Internet Time, but in a traditional format (i.e. hours, minutes, and seconds).</p>
+
+<p>It should be noted that, although the idea may not be new, the script is all my own work.</p>
+
+<p>It is based on UTC and, like its inspiration, has no timezones.</p>
+
+<p>Until I can think of better names, the units are "hours", "minutes", and "seconds" and there are:</p>
+
+<ul>
+<li>100 "seconds" in a "minute"</li>
+<li>100 "minutes" in an "hour"</li>
+<li>20 "hours" in a day (days are the same length as normal, just divided into 20 rather than 24).</li>
+</ul>
+
+<p>Therefore, when it's 12pm normally, it's 10pm in 6x9 Time</p>
+
+<p>By default the script uses a 20-hour clock, but it can be converted to 10-hour with minimal tweaking of the code (There should be comments by every relevent line).</p>
+
+<p><strong>NOTE:</strong> Although the clock uses JavaScript to display and update the time, the maths is performed by PHP. Your server will require PHP to use the clock.</p>
+
+<h2>
+<a id="the-maths" class="anchor" href="#the-maths" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Maths</h2>
+
+<p>Since the days are the same length, the current 6x9 Time is calculated using the number of real seconds since midnight at the start of the current day.</p>
+
+<p>Knowing the number of each type of second in a day, seconds can be easily converted into "seconds" (1 second is 2.3148148148148 "seconds").</p>
+
+<p>Having today's total number of elapsed "seconds", the "hours" and "minutes" can be calculated.</p>
+
+<p>The 3 numbers are then passed to a modified version of the Timezone Cheat Clock.</p>
+
+<p>Fortunately there are exactly 432 milliseconds in a "second", which makes looping the JavaScript very easy; the 1000 millisecond dealy is replaced with a 432 millisecond delay without having to worry about fractions.</p>
+
+<h2>
+<a id="using" class="anchor" href="#using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using</h2>
+
+<p>Add</p>
+
+<pre><code>&lt;script src="6x9time.php" type="text/javascript"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>to the &lt;head&gt; section of the page, remembering to change the path to the script as appropriate.</p>
+
+<p>Then add</p>
+
+<pre><code>&lt;span id="SxNtime"&gt;&lt;/span&gt;
+</code></pre>
+
+<p>where you want the clock to appear.</p>
+
+<p>You don't have to use a &lt;span&gt;; you can use anything, as long as you give it a unique ID and add that ID to the list in the script. The script comes preset to recognise the following 6 IDs: SxNtime, SxNtime1, SxNtime2, SxNtime3, SxNtime4, and SxNtime5.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/6times9">6times9</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
